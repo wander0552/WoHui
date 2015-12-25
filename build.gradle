@@ -19,7 +19,7 @@ allprojects {
 }
 
 ext {
-    minSdkVersion = 15
+    minSdkVersion = 14
     targetSdkVersion = 23
     compileSdkVersion = 23
     buildToolsVersion = '23.0.1'
@@ -30,3 +30,61 @@ ext {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ant.importBuild('build.xml')
+task hai << {
+    String greeting = 'hai from Ant'
+    ant.echo(message: greeting)
+}
+
+task Mycopy(type: Copy) {
+    println("copy")
+    from 'D:\\android_project2\\MyApplication2\\calendar\\src\\main\\res\\drawable'
+    into 'app/src/main/assets'
+    include '**/*.png'
+}
+
+
+task depend(dependsOn: [hello, Mycopy]) {
+    println("depend")
+}
+
+
+
+/*//1.替换渠道号
+def copyAndReplaceText(source, dest, Closure replaceText){
+    dest.write(replaceText(source.text))
+}
+def source = new File('assets/partner.xml')
+def dest = new File('assets/partner.xml')
+copyAndReplaceText(source, dest){
+    it.replaceAll('123wer', '456789')
+}*/
+//2. 读取并替换渠道号
+//def copyAndReplaceText(source, dest, Closure replaceText){
+//    dest.write(replaceText(source.text))
+//}
+//def source = new File('D:\\android_project2\\MyApplication2\\app\\src\\main\\AndroidManifest.xml')
+//def dest = new File('D:\\android_project2\\MyApplication2\\app\\src\\main\\AndroidManifest.xml')
+//def channelFile = new File('D:\\android_project2\\MyApplication2\\app\\src\\main\\assets\\id.txt')
+//def partnerId
+//channelFile.eachLine{line ->
+//    partnerId = line.split('=')[1]
+//    copyAndReplaceText(source, dest){
+//        it.replaceAll('UMENG_CHANNEL_VALUE', partnerId)
+//    }
+//}
+//对于一个渠道，可以实现一个渠道号的替换，怎么实现多个渠道呢？继续......
+//3. it使用的方法
+//line.split(',').each{
+//    println it.method
+//}
+
+//task configure << {
+//    pos = configure(new java.text.FieldPosition(10)) {
+//        beginIndex = 1
+//        endIndex = 5
+//    }
+//    println pos.beginIndex
+//    println pos.endIndex
+//}

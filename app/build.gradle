@@ -1,15 +1,24 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'kuwosing'
+            keyPassword 'kuwo.sing'
+            storeFile file('D:/KuWork/key/kwsing.key')
+            storePassword 'kuwo.sing'
+        }
+    }
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
-
     defaultConfig {
         applicationId "com.wander.wohui"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+
+        manifestPlaceholders = [UMENG_CHANNEL_VALUE:"kuwo"]
     }
     buildTypes {
         release {
@@ -20,6 +29,25 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_7
+    }
+    productFlavors {
+        kuwo {
+            minSdkVersion 8
+            targetSdkVersion 22
+            versionName '0.2'
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE:"kuwo"]
+        }
+        qq {
+            minSdkVersion 8
+            targetSdkVersion 22
+            versionName '0.2'
+        }
+        _360 {
+            minSdkVersion 8
+            targetSdkVersion 22
+            versionName '10000'
+            applicationId 'com.wander.wh'
+        }
     }
 }
 
@@ -36,4 +64,5 @@ dependencies {
     compile 'com.umeng.analytics:analytics:latest.integration'
     compile 'com.squareup.okhttp:okhttp:2.6.0'
     compile 'com.squareup.picasso:picasso:2.3.2'
+    compile 'de.greenrobot:greendao:2.0.0'
 }

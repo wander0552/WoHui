@@ -60,6 +60,7 @@ import cn.sharesdk.onekeyshare.PicViewer;
 import cn.sharesdk.onekeyshare.ShareCore;
 
 import com.mob.tools.utils.UIHandler;
+import com.wander.wohui.R;
 
 /**
  * Photo-text Sharing will be handling in this page
@@ -183,7 +184,7 @@ public class EditPage extends EditPageFakeActivity implements OnClickListener, T
 	// title bar
 	private TitleLayout getPageTitle() {
 		llTitle = new TitleLayout(getContext());
-		llTitle.setId(1);
+		llTitle.setId(R.id.titlebar);
 //		int resId = getBitmapRes(activity, "title_back");
 //		if (resId > 0) {
 //			llTitle.setBackgroundResource(resId);

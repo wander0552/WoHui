@@ -13,7 +13,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -33,7 +33,7 @@
             android:value="YOUR_APP_KEY" />
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="ABTest" />
+            android:value="${UMENG_CHANNEL_VALUE}" />
 
         <!--Share SDK start -->
         <activity

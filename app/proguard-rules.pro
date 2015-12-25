@@ -18,3 +18,16 @@
 
 
 -dontwarn com.squareup.okhttp.**
+-dontwarn com.mob.tools.gui.**
+-dontwarn com.tencent.connect.avatar.**
+-dontwarn android.support.v4.**
+-dontwarn com.coremedia.iso.**
+-dontwarn com.coremedia.iso.gui.**
+-dontwarn org.jdesktop.application.**
+-dontwarn nu.xom.**
+-dontwarn com.googlecode.mp4parser.isoviewer.**
+-dontwarn com.tencent.weibo.utils.**
+-dontwarn org.w3c.dom.**
+-dontwarn com.alipay.**
+-dontwarn cn.sharesdk.**
+-dontwarn cn,sharesdk.tencent.qq.**
