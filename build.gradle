@@ -37,15 +37,14 @@ task hai << {
     ant.echo(message: greeting)
 }
 
-task Mycopy(type: Copy) {
-    println("copy")
-    from 'D:\\android_project2\\MyApplication2\\calendar\\src\\main\\res\\drawable'
-    into 'app/src/main/assets'
-    include '**/*.png'
+task shoufa(type: Copy) {
+    from 'D:\\android_project2\\MyApplication2\\app\\gradles'
+    into 'D:\\android_project2\\MyApplication2\\app'
+    include 'build.gradle'
 }
 
 
-task depend(dependsOn: [hello, Mycopy]) {
+task depend(dependsOn: [hello]) {
     println("depend")
 }
 

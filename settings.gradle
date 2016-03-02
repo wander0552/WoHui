@@ -1,1 +1,1 @@
-include ':app', ':calendar', ':SwipeLayout'
+include ':app', ':calendar', ':SwipeLayout', ':brokenview'
