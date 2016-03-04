@@ -1,7 +1,29 @@
 <resources>
-    <string name="app_name">窝惠</string>
+    <string name="app_name">点滴</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment \n 驾车路径规划可以根据起终点和驾车路线的数据，使用 DrivingRouteOverlay 画出驾车路线图层，包括起终点和转弯点。另外也可以自定义起终点和驾车转弯点的图标。
+
+1.设置搜索条件
+
+目前驾车路径规划支持途经点、避让区域以及支持选择一条避让道路，通过 DriveRouteQuery(RouteSearch.FromAndTo ft, int mode, java.util.List passedByPoints, java.util.List> avoidpolygons, java.lang.String avoidRoad) 设置搜索条件。参数 ft，路径的起点终点；mode，计算路径的模式，可选，默认为速度优先；passedByPoints，途经点，可选；avoidpolygons，避让区域，可选，支持100个避让区域，每个区域最多可有16个顶点。如果是四边形则有4个坐标点，如果是五边形则有5个坐标点。 当同时传入避让区域及避让道路，仅支持避让道路。
+
+2、发送请求和接收数据。
+
+使用类 RouteSearch 的 calculateDriveRouteAsyn(DriveRouteQuery query) 方法进行驾车规划路径计算，在 RouteSearch.OnRouteSearchListener 接口回调方法 void onDriveRouteSearched(DriveRouteResult driveRouteResult,int rCode) 处理驾车路径规划结果。显示效果如图所示：
+
+步行路径规划可以根据起终点和步行路线的数据，使用 WalkRouteOverlay 画出步行路线图层，包括起终点和转弯点。另外也可以自定义起终点和步行转弯点的图标。
+
+1.设置搜索条件。
+
+通过 WalkRouteQuery(RouteSearch.FromAndTo ft, int mode) 设置搜索条件。参数ft，路径的起终点；mode，计算路径的模式。可选，默认为最快捷。
+
+2.发送请求和接收数据。
+
+根据给出的起终点坐标和路径的模式（模式类型参照参考手册类 RouteSearch），使用类 RouteSearch 的 calculateWalkRouteAsyn(WalkRouteQuery query) 方法进行步行规划路径计算，在 RouteSearch.OnRouteSearchListener 接口回调方法 void onWalkRouteSearched(WalkRouteResult walkRouteResult,int rCode) 处理步行规划路径结果。返回的信息中您可以获得路段的距离、步行的预计时间、步行路段的坐标点、步行路段的道路名称、导航主要操作等信息。显示效果如下：
+</string>
 </resources>

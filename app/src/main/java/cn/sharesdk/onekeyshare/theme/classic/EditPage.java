@@ -60,7 +60,7 @@ import cn.sharesdk.onekeyshare.PicViewer;
 import cn.sharesdk.onekeyshare.ShareCore;
 
 import com.mob.tools.utils.UIHandler;
-import com.wander.wohui.R;
+import com.wander.by.R;
 
 /**
  * Photo-text Sharing will be handling in this page
