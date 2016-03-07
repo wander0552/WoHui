@@ -1,5 +1,6 @@
 package com.wander.by;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -16,6 +17,7 @@ import android.view.MenuItem;
 
 import com.wander.presenter.MainPresenter;
 import com.wander.ui.main.LocusFragment;
+import com.wander.ui.main.ScrollingActivity;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
@@ -93,8 +95,9 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+            startActivity(new Intent(this, ScrollingActivity.class));
         } else if (id == R.id.nav_gallery) {
+            mainPresenter.goFragment();
 
         } else if (id == R.id.nav_slideshow) {
 

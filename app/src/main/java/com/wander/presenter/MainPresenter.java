@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.wander.by.MainActivity;
 import com.wander.by.R;
+import com.wander.ui.main.ItemFragment;
 import com.wander.ui.main.LocusFragment;
 
 /**
@@ -13,16 +14,25 @@ import com.wander.ui.main.LocusFragment;
  */
 public class MainPresenter {
     private MainActivity mainActivity;
+    private Fragment currentFragment;
 
     public MainPresenter(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
     }
 
-    public void goFirst(){
-        if (mainActivity != null){
+    public void goFirst() {
+        if (mainActivity != null) {
             mainActivity.setTitle("轨迹");
-            LocusFragment fragment = LocusFragment.newInstance("11","22");
-            replaceFragment(null,fragment);
+            LocusFragment fragment = LocusFragment.newInstance("11", "22");
+            replaceFragment(null, fragment);
+        }
+    }
+
+    public void goFragment() {
+        if (mainActivity != null) {
+            mainActivity.setTitle("Fragment");
+            ItemFragment itemFragment = ItemFragment.newInstance(100);
+            replaceFragment(currentFragment, itemFragment);
         }
     }
 
@@ -34,6 +44,7 @@ public class MainPresenter {
             }
             if (newFragment != null) {
                 transaction.replace(R.id.fragment_container, newFragment);
+                currentFragment = newFragment;
             }
             transaction.commit();
         }
