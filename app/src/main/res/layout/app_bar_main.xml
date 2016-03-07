@@ -21,6 +21,14 @@
 
     </android.support.design.widget.AppBarLayout>
 
+    <ImageView
+        android:src="@mipmap/header_bg"
+        app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        app:layout_collapseMode="parallax"
+        android:minHeight="100dp"/>
     <include layout="@layout/content_main" />
 
     <android.support.design.widget.FloatingActionButton
