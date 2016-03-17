@@ -17,14 +17,15 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/icon"
-        android:name=".App"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -81,6 +82,8 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <!--Share SDK start -->
+        <!-- 定位需要的服务 使用2.0的定位需要加上这个 -->
+        <service android:name="com.amap.api.location.APSService"></service>
 
     </application>
 
