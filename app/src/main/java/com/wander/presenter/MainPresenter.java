@@ -1,10 +1,12 @@
 package com.wander.presenter;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
 import com.wander.by.MainActivity;
 import com.wander.by.R;
+import com.wander.ui.find.FindFragment;
 import com.wander.ui.main.LocusFragment;
 
 /**
@@ -12,23 +14,31 @@ import com.wander.ui.main.LocusFragment;
  * email 805677461@qq.com
  */
 public class MainPresenter {
+    private final FragmentManager fragmentManager;
+    private String FIRST = "first";
+    private String FIND = "find";
     private MainActivity mainActivity;
 
     public MainPresenter(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
+
+        fragmentManager = mainActivity.getSupportFragmentManager();
     }
 
     public void goFirst(){
-        if (mainActivity != null){
-            mainActivity.setTitle("轨迹");
             LocusFragment fragment = LocusFragment.newInstance("11","22");
-            replaceFragment(null,fragment);
-        }
+            replaceFragment(null,fragment,"轨迹");
     }
 
-    public void replaceFragment(Fragment oldFragment, Fragment newFragment) {
+    public void goFind(){
+        FindFragment findFragment = FindFragment.newInstance("","");
+        replaceFragment(null,findFragment,"你我之间");
+    }
+
+    public void replaceFragment(Fragment oldFragment, Fragment newFragment,String title) {
         if (mainActivity != null) {
-            FragmentTransaction transaction = mainActivity.getSupportFragmentManager().beginTransaction();
+            mainActivity.setTitle(title);
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
             if (oldFragment != null) {
                 transaction.remove(oldFragment);
             }

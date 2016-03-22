@@ -15,10 +15,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.wander.presenter.MainPresenter;
+import com.wander.ui.find.FindFragment;
 import com.wander.ui.main.LocusFragment;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, FindFragment.OnFindFragmentListener {
 
     private MainPresenter mainPresenter;
 
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mainPresenter = new MainPresenter(this);
-        mainPresenter.goFirst();
+        mainPresenter.goFind();
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,11 +94,13 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
+            mainPresenter.goFirst();
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
+            mainPresenter.goFind();
 
         } else if (id == R.id.nav_slideshow) {
-
+            mainPresenter.goFirst();
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
