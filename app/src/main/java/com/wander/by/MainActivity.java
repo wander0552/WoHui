@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.wander.presenter.MainPresenter;
+import com.wander.ui.Gps.GPSActivity;
 import com.wander.ui.find.FindFragment;
 import com.wander.ui.main.LocusFragment;
 
@@ -100,7 +101,7 @@ public class MainActivity extends AppCompatActivity
             mainPresenter.goFind();
 
         } else if (id == R.id.nav_slideshow) {
-            mainPresenter.goFirst();
+            mainPresenter.goActivity(this, GPSActivity.class);
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {

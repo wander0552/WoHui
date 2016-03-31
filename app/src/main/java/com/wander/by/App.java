@@ -14,6 +14,8 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
+import com.umeng.socialize.PlatformConfig;
+import com.wander.base.umeng.ShareInit;
 import com.wander.base.utils.SDCardUtils;
 
 import java.io.File;
@@ -58,6 +60,8 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
+        ShareInit.init();
+
         initImageLoader(this);
         SDCardUtils.init();
         OkHttpFinalConfiguration.Builder builder = new OkHttpFinalConfiguration.Builder().setTimeout(20000);
