@@ -1,6 +1,6 @@
 package com.wander.by;
 
-import android.net.Uri;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,11 +13,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.umeng.socialize.ShareAction;
+import com.umeng.socialize.UMShareAPI;
+import com.umeng.socialize.UMShareListener;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.media.UMImage;
+import com.umeng.socialize.media.UMVideo;
+import com.umeng.socialize.media.UMusic;
 import com.wander.presenter.MainPresenter;
 import com.wander.ui.Gps.GPSActivity;
 import com.wander.ui.find.FindFragment;
-import com.wander.ui.main.LocusFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, FindFragment.OnFindFragmentListener {
@@ -105,6 +112,8 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
+            toShare();
+
 
         } else if (id == R.id.nav_send) {
 
@@ -113,5 +122,44 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void toShare() {
+        UMImage image = new UMImage(this, "http://www.umeng.com/images/pic/social/integrated_3.png");
+
+        UMusic music = new UMusic("http://music.huoxing.com/upload/20130330/1364651263157_1085.mp3");
+        music.setTitle("This is music title");
+        music.setThumb(new UMImage(this, "http://www.umeng.com/images/pic/social/chart_1.png"));
+        UMVideo video = new UMVideo("http://video.sina.com.cn/p/sports/cba/v/2013-10-22/144463050817.html");
+        String url = "http://www.umeng.com";
+
+        /**shareboard  need the platform all you want and callbacklistener,then open it**/
+        new ShareAction(this).setDisplayList(SHARE_MEDIA.SINA,SHARE_MEDIA.QQ,SHARE_MEDIA.QZONE,SHARE_MEDIA.WEIXIN,SHARE_MEDIA.WEIXIN_CIRCLE)
+                .withText("来自友盟分享面板")
+                .withMedia(image)
+                .withMedia(video)
+                .setCallback(new UMShareListener() {
+                    @Override
+                    public void onResult(SHARE_MEDIA share_media) {
+                        Toast.makeText(MainActivity.this,"成功",Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onError(SHARE_MEDIA share_media, Throwable throwable) {
+                        Toast.makeText(MainActivity.this,"失败",Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onCancel(SHARE_MEDIA share_media) {
+                        Toast.makeText(MainActivity.this,"CANCEL",Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .open();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get( this ).onActivityResult( requestCode, resultCode, data);
     }
 }

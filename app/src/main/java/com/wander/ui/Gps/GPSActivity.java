@@ -9,6 +9,7 @@ import android.location.LocationManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.wander.by.R;
@@ -42,6 +43,7 @@ public class GPSActivity extends AppCompatActivity implements GpsStatus.Listener
         tv_bearing = (TextView) findViewById(R.id.bearing);
         tv_count = (TextView) findViewById(R.id.count);
         tv_time = (TextView) findViewById(R.id.time);
+        SeekBar seekBar = (SeekBar) findViewById(R.id.seekBar);
 
     }
 
