@@ -9,10 +9,13 @@ import android.location.LocationManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.CheckedTextView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.wander.by.R;
+import com.wander.view.ColorArcProgressBar;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -26,6 +29,8 @@ public class GPSActivity extends AppCompatActivity implements GpsStatus.Listener
     private final String TAG = "GPS";
     private TextView lat_long, tv_altitude, tv_bearing, tv_accuracy, tv_speed, tv_time, tv_count;
     private LocationListener locationListener;
+    private CheckedTextView check;
+    private ColorArcProgressBar speedBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +48,15 @@ public class GPSActivity extends AppCompatActivity implements GpsStatus.Listener
         tv_bearing = (TextView) findViewById(R.id.bearing);
         tv_count = (TextView) findViewById(R.id.count);
         tv_time = (TextView) findViewById(R.id.time);
-        SeekBar seekBar = (SeekBar) findViewById(R.id.seekBar);
+        speedBar = (ColorArcProgressBar) findViewById(R.id.stepBar);
+        check = (CheckedTextView) findViewById(R.id.check);
+        check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                check.toggle();
+
+            }
+        });
 
     }
 
@@ -55,7 +68,7 @@ public class GPSActivity extends AppCompatActivity implements GpsStatus.Listener
             //GPS模块打开，可以定位操作
         }
         // 通过GPS定位
-        String LocateType = locationManager.GPS_PROVIDER;
+        String LocateType = LocationManager.GPS_PROVIDER;
         Location location = locationManager.getLastKnownLocation(LocateType);
         // 设置监听器，设置自动更新间隔这里设置1000ms，移动距离：0米。
         locationListener = new LocationListener() {
@@ -73,6 +86,7 @@ public class GPSActivity extends AppCompatActivity implements GpsStatus.Listener
                 //精度
                 float accuracy = location.getAccuracy();
 
+                speedBar.setCurrentValues(speed);
                 lat_long.setText(String.format("精度%s \n纬度%s", longitude, latitude));
                 tv_accuracy.setText(String.format("精度： %s", accuracy));
                 tv_bearing.setText(String.format("方向：%s", bearing));
