@@ -6,11 +6,13 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 
 import com.wander.by.MainActivity;
 import com.wander.by.R;
 import com.wander.ui.Gps.GPSActivity;
 import com.wander.ui.find.FindFragment;
+import com.wander.ui.iflytek.IflyActivity;
 import com.wander.ui.main.LocusFragment;
 
 /**
@@ -39,7 +41,7 @@ public class MainPresenter {
         replaceFragment(null, findFragment, "你我之间");
     }
 
-    public void goActivity( Context context,Class<GPSActivity> activity) {
+    public void goActivity( Context context,Class<?> activity) {
         context.startActivity(new Intent(context, activity));
     }
 

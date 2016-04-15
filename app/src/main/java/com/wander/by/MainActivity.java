@@ -26,6 +26,7 @@ import com.umeng.socialize.media.UMusic;
 import com.wander.presenter.MainPresenter;
 import com.wander.ui.Gps.GPSActivity;
 import com.wander.ui.find.FindFragment;
+import com.wander.ui.iflytek.IflyActivity;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, FindFragment.OnFindFragmentListener {
@@ -114,11 +115,9 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_slideshow) {
             mainPresenter.goActivity(this, GPSActivity.class);
         } else if (id == R.id.nav_manage) {
-
+            mainPresenter.goActivity(this, IflyActivity.class);
         } else if (id == R.id.nav_share) {
             toShare();
-
-
         } else if (id == R.id.nav_send) {
 
         }

@@ -179,3 +179,5 @@
 #    导航
     -keep class com.amap.api.navi.**{*;}
     -keep class com.autonavi.**{*;}
+#    讯飞
+    -keep class com.iflytek.**{*;}

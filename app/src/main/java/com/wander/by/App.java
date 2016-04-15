@@ -6,6 +6,8 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Handler;
 
+import com.iflytek.cloud.SpeechConstant;
+import com.iflytek.cloud.SpeechUtility;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
 import com.nostra13.universalimageloader.cache.disc.naming.HashCodeFileNameGenerator;
 import com.nostra13.universalimageloader.cache.memory.impl.UsingFreqLimitedMemoryCache;
@@ -61,6 +63,8 @@ public class App extends Application {
         super.onCreate();
         instance = this;
         ShareInit.init();
+
+        SpeechUtility.createUtility(this, SpeechConstant.APPID +"=570cc6ff");
 
         initImageLoader(this);
         SDCardUtils.init();
